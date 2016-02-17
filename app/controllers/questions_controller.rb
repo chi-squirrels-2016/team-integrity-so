@@ -12,8 +12,6 @@ get '/questions/:id' do
     @answer_responses << Response.where(responsable_type: 'Answer', responsable_id: answer.id)
   end
 
-
-
   erb :'questions/show'
 end
 
@@ -35,6 +33,10 @@ get '/questions/:id/vote' do
 end
 
 # how to enter a question/comment/answer
-post '/questions/' do
-   Question.new()
+post '/questions' do
+   Question.create(body: params[:body], user_id: current_user.id)
+   redirect '/questions'
 end
+
+
+
