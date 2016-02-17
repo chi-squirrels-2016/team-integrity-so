@@ -1,12 +1,7 @@
 
 <h1>TEAM AWESOME OVERFLOW!</h1>
 
-<form>
-  <% text = "enter content" %>
-  <textarea type="text" rows="4" cols="50" name="body" placeholder="<%= text %>"></textarea>
-  <br>
-  <input type="submit" value="Submit" />
-</form>
+<%= erb :_form %>
 
 <% @questions.each do |question| %>
   <li>
