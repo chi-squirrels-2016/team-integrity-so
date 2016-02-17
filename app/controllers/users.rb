@@ -21,14 +21,19 @@ get '/login' do
 end
 
 post '/login' do
-  user = User.find_by_email(params[:email])
-  @password = params[:password]
-  if user.authenticate(params[:password])
-    session[:user_id] = user.id
-    redirect '/'
-  else
-    @message = "Sorry, incorrect Password"
+  if User.find_by_email(params[:email]).nil?
+    @message = "Sorry, incorrect Email or Password"
     erb :'users/login'
+  else
+    user = User.find_by_email(params[:email])
+    @password = params[:password]
+    if user.authenticate(params[:password])
+      session[:user_id] = user.id
+      redirect '/'
+    else
+      @message = "Sorry, incorrect Email or Password"
+      erb :'users/login'
+    end
   end
 end
 
