@@ -1,0 +1,12 @@
+<div class="container">
+  <h2>Login Page</h2>
+
+    <% if @message %>
+      <%= @message %>
+    <% end %>
+
+    <form action="/login" method="POST">
+        <%= erb :'users/_form' %>
+    </form>
+
+</div>
