@@ -1,16 +1,22 @@
 <h1>Question: <%= @question.body %></h1>
 <% @question_responses.each do |question_response| %>
   <li>
-    Question Response: <%= question_response.body %>
-    <br>
+    Question Comment: <%= question_response.body %><br>
     <span>Written by <%= question_response.user.email %></span>
   </li>
 <% end %>
-
+<% counter = 0 %>
 <% @answers.each do |answer| %>
   <li>
     Answer: <%= answer.body %>
     <br>
     <span>Written by <%= answer.user.email %></span>
+    <% @answer_responses[counter].each do |response| %>
+      <li>
+        Answer Comment: <%= response.body %><br>
+        <span>Written by <%= response.user.email %></span>
+      </li>
+    <% end %>
+    <% counter += 1 %>
   </li>
 <% end %>
