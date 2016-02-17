@@ -1,22 +1,30 @@
 <h1>Question: <%= @question.body %></h1>
-<% @question_responses.each do |question_response| %>
-  <li>
-    Question Comment: <%= question_response.body %><br>
-    <span>Written by <%= question_response.user.email %></span>
-  </li>
-<% end %>
+
+<ul>
+  <% @question_responses.each do |question_response| %>
+    <li class="question-comment-list">
+      Question Comment: <%= question_response.body %><br>
+      <span>Written by <%= question_response.user.email %></span>
+    </li>
+  <% end %>
+</ul>
+
 <% counter = 0 %>
-<% @answers.each do |answer| %>
-  <li>
-    Answer: <%= answer.body %>
-    <br>
-    <span>Written by <%= answer.user.email %></span>
-    <% @answer_responses[counter].each do |response| %>
-      <li>
-        Answer Comment: <%= response.body %><br>
-        <span>Written by <%= response.user.email %></span>
+<ul>
+  <% @answers.each do |answer| %>
+      <li class="answers-list">
+        Answer: <%= answer.body %>
+        <br>
+        <span>Written by <%= answer.user.email %></span>
+        <ul>
+          <% @answer_responses[counter].each do |response| %>
+            <li class="answer-comment-list">
+              Answer Comment: <%= response.body %><br>
+              <span>Written by <%= response.user.email %></span>
+            </li>
+          <% end %>
+        </ul>
+        <% counter += 1 %>
       </li>
-    <% end %>
-    <% counter += 1 %>
-  </li>
-<% end %>
+  <% end %>
+</ul>
