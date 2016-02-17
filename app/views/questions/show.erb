@@ -1,8 +1,15 @@
-<h1><%= @question.body %></h1>
+<h1>Question: <%= @question.body %></h1>
+<% @question_responses.each do |question_response| %>
+  <li>
+    Question Response: <%= question_response.body %>
+    <br>
+    <span>Written by <%= question_response.user.email %></span>
+  </li>
+<% end %>
 
 <% @answers.each do |answer| %>
   <li>
-    <%= answer.body %>
+    Answer: <%= answer.body %>
     <br>
     <span>Written by <%= answer.user.email %></span>
   </li>
