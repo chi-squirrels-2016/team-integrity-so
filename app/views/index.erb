@@ -11,11 +11,7 @@
     <% else %>
       <a href="/questions/<%= question.id %>"><%= question.body %></a>
     <% end %>
-
     <span>Written by <%= question.user.email %></span>
-    <% if @message %>
-      <%= @message %>
-    <% end %>
   </li>
 <% end %>
 
