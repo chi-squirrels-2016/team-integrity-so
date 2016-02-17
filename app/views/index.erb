@@ -1,1 +1,10 @@
-<p>blank</p>
+
+<h1>TEAM AWESOME OVERFLOW!</h1>
+
+<% @questions.each do |question| %>
+  <li>
+    <a href="/questions/<%= question.id %>"><%= question.body %></a>
+    <span>Written by <%= question.user.email %></span>
+  </li>
+<% end %>
+
