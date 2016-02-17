@@ -11,7 +11,7 @@ helpers do
     if logged_in?
       return true
     else
-      halt(404, erb(:'sessions/trapdoor'))
+      halt(404, erb(:'users/trapdoor'))
     end
   end
 end
