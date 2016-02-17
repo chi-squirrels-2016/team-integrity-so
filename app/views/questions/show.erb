@@ -1,1 +1,9 @@
 <h1><%= @question.body %></h1>
+
+<% @answers.each do |answer| %>
+  <li>
+    <%= answer.body %>
+    <br>
+    <span>Written by <%= answer.user.email %></span>
+  </li>
+<% end %>
