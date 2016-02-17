@@ -1,8 +1,11 @@
 
 <h1>TEAM AWESOME OVERFLOW!</h1>
 
+<%= erb :_form %>
+
 <% @questions.each do |question| %>
   <li>
+    <a href="/questions/<%= question.id %>/vote">Up Arrow</a>
     <a href="/questions/<%= question.id %>"><%= question.body %></a>
     <span>Written by <%= question.user.email %></span>
   </li>
