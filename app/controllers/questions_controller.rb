@@ -20,12 +20,14 @@ get '/questions/:id' do
 end
 
 get '/questions/:question_id/answers/:answer_id/best_answer' do
-  # what if you're question asker
   question = Question.find(params[:question_id])
-  question.best_answer_id = params[:answer_id]
-
-  question.save
-  redirect '/questions/:question_id'
+  if question.user_id == current_user.id
+    question.best_answer_id = params[:answer_id]
+    question.save
+    redirect "/questions/#{params[:question_id]}"
+  else
+    redirect "/questions/#{params[:question_id]}"
+  end
 end
 
 # how to vote

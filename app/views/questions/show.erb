@@ -17,7 +17,9 @@
         <% if @star == answer.id %>
           <span>BEST</span>
         <% end %>
-        <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/best_answer">Best Answer</a>
+        <% if @question.id == current_user.id %>
+          <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/best_answer">Best Answer</a>
+        <% end %>
         Answer: <%= answer.body %>
         <br>
         <span>Written by <%= answer.user.email %></span><br>
