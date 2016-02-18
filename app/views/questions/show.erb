@@ -11,6 +11,7 @@
 </ul>
 
 <% counter = 0 %>
+
 <ul>
   <% @answers.each do |answer| %>
       <li class="answers-list">
@@ -31,10 +32,12 @@
               <span>Written by <%= response.user.email %></span>
             </li>
           <% end %>
+          <!-- Link to post an answer comments -->
         </ul>
         <% counter += 1 %>
       </li>
   <% end %>
 </ul>
 
+<a href="/questions/<%= @question.id %>/answers">Answer a Question</a>
 
