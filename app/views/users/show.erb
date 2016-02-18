@@ -12,6 +12,7 @@
 
 <h3>Answers</h3>
 <ul>
+  <!-- Update routes for answers. Links as body? -->
 <% current_user.answers.each do |answer| %>
   <li><a href="#"><%= answer.body %></a> on <%= long_form_date(answer.created_at) %></li>
 <% end %>
