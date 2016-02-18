@@ -11,9 +11,6 @@ get '/questions/:id' do
   @answers.each do |answer|
     @answer_responses << Response.where(responsable_type: 'Answer', responsable_id: answer.id)
   end
-
-
-
   erb :'questions/show'
 end
 

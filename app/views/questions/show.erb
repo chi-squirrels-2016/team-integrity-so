@@ -1,4 +1,5 @@
 <h1>Question: <%= @question.body %></h1>
+<a href="/questions/<%= @question.id %>/responses">Comment on Question</a>
 
 <ul>
   <% @question_responses.each do |question_response| %>
@@ -15,7 +16,8 @@
       <li class="answers-list">
         Answer: <%= answer.body %>
         <br>
-        <span>Written by <%= answer.user.email %></span>
+        <span>Written by <%= answer.user.email %></span><br>
+        <a href="/answers/<%= answer.id %>/responses">Comment on Answer</a>
         <ul>
           <% @answer_responses[counter].each do |response| %>
             <li class="answer-comment-list">
@@ -29,5 +31,4 @@
   <% end %>
 </ul>
 
-Submit Answer:
-<%= erb :_form %>
+
