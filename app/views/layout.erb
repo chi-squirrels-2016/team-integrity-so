@@ -3,27 +3,38 @@
 <head>
   <link rel="stylesheet" href="/css/normalize.css">
   <link rel="stylesheet" href="/css/application.css">
+  <link href='https://fonts.googleapis.com/css?family=Puritan:800,800italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Courgette' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
   <script src="/js/application.js"></script>
   <title></title>
 </head>
 <body>
   <header>
+    <div class="logo"><a href="/"><img class="logo" src="/css/heart_hands.jpg"></a></div>
     <nav>
-      <ul>
+      <ul class="nav-ul">
       <% if logged_in? %>
-        <li>Logged in as <%= current_user.email %></li>
-        <li><a href="/">Home</a></li>
-        <li><a href="/users/<%= current_user.id %>">Profile</a></li>
-        <li><a href="/logout">Logout</a></li>
+        <li class="nav-li accent-text" >Logged in as <%= current_user.email %></li>
+        <li class="nav-li accent-text" ><a href="/">Home</a></li>
+        <li class="nav-li accent-text" ><a href="/users/<%= current_user.id %>">Profile</a></li>
+        <li class="nav-li accent-text" ><a href="/logout">Logout</a></li>
       <% else %>
-        <li><a href="/">Home</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a href="/login">Login</a></li>
+        <li class="nav-li accent-text" ><a href="/">Home</a></li>
+        <li class="nav-li accent-text" ><a href="/register">Register</a></li>
+        <li class="nav-li accent-text" ><a href="/login">Login</a></li>
       <% end %>
       </ul>
     </nav>
+
   </header>
-  <%= yield %>
+  <div class="container">
+    <%= yield %>
+  </div>
+  <footer>
+    <p class="trademark accent-text">brought to you by the bros at TEAM AWESOME</p>
+  </footer>
 </body>
 </html>
