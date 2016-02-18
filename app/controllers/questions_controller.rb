@@ -11,7 +11,21 @@ get '/questions/:id' do
   @answers.each do |answer|
     @answer_responses << Response.where(responsable_type: 'Answer', responsable_id: answer.id)
   end
+  @answers.each do |answer|
+    if answer.id == @question.best_answer_id
+      @star = answer.id
+    end
+  end
   erb :'questions/show'
+end
+
+get '/questions/:question_id/answers/:answer_id/best_answer' do
+  # what if you're question asker
+  question = Question.find(params[:question_id])
+  question.best_answer_id = params[:answer_id]
+
+  question.save
+  redirect '/questions/:question_id'
 end
 
 # how to vote

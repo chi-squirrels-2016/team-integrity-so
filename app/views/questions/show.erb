@@ -14,6 +14,10 @@
 <ul>
   <% @answers.each do |answer| %>
       <li class="answers-list">
+        <% if @star == answer.id %>
+          <span>BEST</span>
+        <% end %>
+        <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/best_answer">Best Answer</a>
         Answer: <%= answer.body %>
         <br>
         <span>Written by <%= answer.user.email %></span><br>

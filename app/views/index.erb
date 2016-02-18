@@ -9,6 +9,7 @@
 <% @questions.each do |question| %>
   <li>
     <%= question.votes.count %> Upvotes!
+    <%= question.answers.count %> Answers!
     <a href="/questions/<%= question.id %>/vote">Up Arrow</a>
     <% if question.body.length > 40 %>
       <a href="/questions/<%= question.id %>"><%= question.body[0..40] %> ...</a>
