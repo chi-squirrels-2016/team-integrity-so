@@ -14,6 +14,7 @@ get '/questions/:id' do
   erb :'questions/show'
 end
 
+
 # how to vote
 get '/questions/:id/vote' do
   ensure_login
