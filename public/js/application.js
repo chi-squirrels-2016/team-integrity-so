@@ -16,6 +16,7 @@ $(document).ready(function() {
       $("#answers-list").append( thing );
     });
   });
+
   $('#answers-list').on("click", '#submit-button', function( event ) {
     event.preventDefault();
     var destination = $(this).parent().attr('action');
@@ -31,6 +32,7 @@ $(document).ready(function() {
       $('#new-answer').show();
     });
   });
+
   $('.new-answer-comment').on("click", function( event ) {
     event.preventDefault();
     var destination = $(this).attr('href');
@@ -41,6 +43,9 @@ $(document).ready(function() {
     ajaxRequest.done(function(thing) {
       $(".new-answer-comment").hide();
       $("#space-for-comment-box").append( thing );
+    });
+  });
+
   $('a#question_comment_btn').on("click", function(event){
     event.preventDefault();
     var destination = $(this).attr('href');
@@ -53,6 +58,7 @@ $(document).ready(function() {
       $('a#question_comment_btn').css('display', 'none');
     });
   });
+
   $('ul#question-comment-ul').on('click', 'form input', function (event) {
     event.preventDefault();
     var destination = $('form').attr('action');
