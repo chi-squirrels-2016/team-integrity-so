@@ -13,7 +13,6 @@ post '/questions/:id/answers' do
     if @answer.save
       status 200
       @question = Question.find(params[:id])
-      p @question.id
       erb :"answers/_new", :layout => false
     else
       status 422
