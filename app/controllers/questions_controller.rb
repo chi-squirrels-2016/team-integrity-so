@@ -7,6 +7,10 @@ get '/questions/:id' do
   @question = Question.find(params[:id])
   @question_responses = Response.where(responsable_type: 'Question', responsable_id: @question.id)
   @answers = Answer.where(question_id: @question.id)
+  count = @question.view_count
+  count += 1
+  @question.view_count = count
+  @question.save
   @answer_responses = []
   @answers.each do |answer|
     @answer_responses << Response.where(responsable_type: 'Answer', responsable_id: answer.id)

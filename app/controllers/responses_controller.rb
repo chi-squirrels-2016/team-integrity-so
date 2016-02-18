@@ -1,7 +1,11 @@
 
 get '/questions/:id/responses' do
   @question_id = params[:id]
-  erb :'responses/new_question_response'
+  if request.xhr?
+    erb :'responses/new_question_response', layout: false
+  else
+    erb :'responses/new_question_response'
+  end
 end
 
 get '/answers/:id/responses' do
@@ -16,12 +20,22 @@ end
 
 post '/questions/:id/responses' do
   @question_response = Response.new(body: params[:body], responsable_type: 'Question', responsable_id: params[:id], user_id: current_user.id)
-  if @question_response.save
-    redirect "/questions/#{params[:id]}"
+  if request.xhr?
+    if @question_response.save
+      status 200
+      erb :_comment, layout: false, locals: {question_response: @question_response}
+    else
+      status 422
+    end
   else
-    @question_id = params[:id]
-    @errors = @question_response.errors.full_messages
-    erb :'responses/new_question_response'
+    if @question_response.save
+
+      redirect "/questions/#{params[:id]}"
+    else
+      @question_id = params[:id]
+      @errors = @question_response.errors.full_messages
+      erb :'responses/new_question_response'
+    end
   end
 end
 

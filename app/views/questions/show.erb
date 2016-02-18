@@ -1,7 +1,7 @@
 <h1>Question: <%= @question.body %></h1>
-<a href="/questions/<%= @question.id %>/responses">Comment on Question</a>
+<a id="question_comment_btn" href="/questions/<%= @question.id %>/responses">Comment on Question</a>
 
-<ul>
+<ul id="question-comment-ul">
   <% @question_responses.each do |question_response| %>
     <li class="question-comment-list">
       Question Comment: <%= question_response.body %><br>
@@ -11,6 +11,7 @@
 </ul>
 
 <% counter = 0 %>
+
 
 <ul id="answers-list">
   <% @answers.each do |answer| %>
