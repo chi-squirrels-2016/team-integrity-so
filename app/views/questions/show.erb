@@ -27,9 +27,9 @@
         <span>Written by <%= answer.user.email %></span><br>
         <a class="new-answer-comment" href="/answers/<%= answer.id %>/responses">Comment on Answer</a>
         <span id="space-for-comment-box"></span>
-        <ul>
+        <ul class="answer-comment-list">
           <% @answer_responses[counter].each do |response| %>
-            <li class="answer-comment-list">
+            <li>
               Answer Comment: <%= response.body %><br>
               <span>Written by <%= response.user.email %></span>
             </li>
