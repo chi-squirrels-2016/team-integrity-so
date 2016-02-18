@@ -1,0 +1,12 @@
+<% if @errors %>
+  <span>Something went wrong:</span>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<form method="post" action="/answers/<%= @answer_id %>/responses">
+  <%= erb :_form %>
+</form>
