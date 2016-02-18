@@ -1,7 +1,10 @@
 
 <h1>TEAM AWESOME OVERFLOW!</h1>
 
-<%= erb :_form %>
+<form method="POST" action="/questions">
+  <%= erb :_form %>
+</form>
+
 
 <% @questions.each do |question| %>
   <li>
