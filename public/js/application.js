@@ -41,8 +41,25 @@ $(document).ready(function() {
       url: destination
     });
     ajaxRequest.done(function(thing) {
-      $(".new-answer-comment").hide();
-      $("#space-for-comment-box").append( thing );
+      $(this).hide();
+      $(this).next().append( thing );
+    }.bind(this));
+  });
+
+  $('#answers-list').on("click", '#submit-button', function( event ) {
+    event.preventDefault();
+    var this_tracker = $(this).parent()
+    var destination = $(this).parent().attr('action');
+    var textInput = ($('#answer-comment-container').children().serialize());
+    var ajaxRequest = $.ajax({
+      method: 'POST',
+      url: destination,
+      data: textInput
+    });
+    ajaxRequest.done(function(newAnswerComment) {
+      $(this_tracker).parent().append( newAnswerComment );
+      $('#answer-comment-container').remove();
+      $('.new-answer-comment').show();
     });
   });
 

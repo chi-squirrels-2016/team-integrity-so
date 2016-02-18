@@ -7,6 +7,6 @@
   </ul>
 <% end %>
 
-<form method="post" action="/answers/<%= @answer_id %>/responses">
+<form id="answer-comment-container" method="post" action="/answers/<%= @answer_id %>/responses">
   <%= erb :_form %>
 </form>

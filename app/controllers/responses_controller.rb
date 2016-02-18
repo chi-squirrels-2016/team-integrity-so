@@ -11,7 +11,6 @@ end
 get '/answers/:id/responses' do
   @answer_id = params[:id]
   if request.xhr?
-    p @answer_id
     erb :'responses/new_answer_response', :layout => false
   else
     erb :'responses/new_answer_response'
@@ -29,7 +28,6 @@ post '/questions/:id/responses' do
     end
   else
     if @question_response.save
-
       redirect "/questions/#{params[:id]}"
     else
       @question_id = params[:id]
@@ -43,11 +41,22 @@ post '/answers/:id/responses' do
   @answer_response = Response.new(body: params[:body], responsable_type: 'Answer', responsable_id: params[:id], user_id: session[:user_id])
   answer_object = Answer.find(params[:id])
   question_id = answer_object.question_id
-  if @answer_response.save
-    redirect "/questions/#{question_id}"
+  if request.xhr?
+    p "***************************%%%%%"
+    if @answer_response.save
+      p @answer_response.id
+      status 200
+      erb :'_answer-comment', :layout => false
+    else
+      status 422
+    end
   else
-    @answer_id = params[:id]
-    @errors = @answer_response.errors.full_messages
-    erb :'responses/new_question_response'
+    if @answer_response.save
+      redirect "/questions/#{question_id}"
+    else
+      @answer_id = params[:id]
+      @errors = @answer_response.errors.full_messages
+      erb :'responses/new_question_response'
+    end
   end
 end
