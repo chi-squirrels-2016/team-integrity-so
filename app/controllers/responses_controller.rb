@@ -10,7 +10,12 @@ end
 
 get '/answers/:id/responses' do
   @answer_id = params[:id]
-  erb :'responses/new_answer_response'
+  if request.xhr?
+    p @answer_id
+    erb :'responses/new_answer_response', :layout => false
+  else
+    erb :'responses/new_answer_response'
+  end
 end
 
 post '/questions/:id/responses' do

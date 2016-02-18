@@ -12,9 +12,10 @@
 
 <% counter = 0 %>
 
-<ul id='answer-list'>
+
+<ul id="answers-list">
   <% @answers.each do |answer| %>
-      <li class="answers-list">
+      <li>
         <% if @star == answer.id %>
           <span>BEST</span>
         <% end %>
@@ -24,7 +25,8 @@
         Answer: <%= answer.body %>
         <br>
         <span>Written by <%= answer.user.email %></span><br>
-        <a href="/answers/<%= answer.id %>/responses">Comment on Answer</a>
+        <a class="new-answer-comment" href="/answers/<%= answer.id %>/responses">Comment on Answer</a>
+        <span id="space-for-comment-box"></span>
         <ul>
           <% @answer_responses[counter].each do |response| %>
             <li class="answer-comment-list">
@@ -32,12 +34,11 @@
               <span>Written by <%= response.user.email %></span>
             </li>
           <% end %>
-          <!-- Link to post an answer comments -->
         </ul>
         <% counter += 1 %>
       </li>
   <% end %>
 </ul>
 
-<a href="/questions/<%= @question.id %>/answers">Answer a Question</a>
+<a id="new-answer" href="/questions/<%= @question.id %>/answers">Answer a Question</a>
 
