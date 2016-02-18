@@ -12,9 +12,9 @@
 
 <% counter = 0 %>
 
-<ul>
+<ul id="answers-list">
   <% @answers.each do |answer| %>
-      <li class="answers-list">
+      <li>
         <% if @star == answer.id %>
           <span>BEST</span>
         <% end %>
@@ -32,12 +32,11 @@
               <span>Written by <%= response.user.email %></span>
             </li>
           <% end %>
-          <!-- Link to post an answer comments -->
         </ul>
         <% counter += 1 %>
       </li>
   <% end %>
 </ul>
 
-<a href="/questions/<%= @question.id %>/answers">Answer a Question</a>
+<a id="new-answer" href="/questions/<%= @question.id %>/answers">Answer a Question</a>
 
