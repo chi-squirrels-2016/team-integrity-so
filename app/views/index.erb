@@ -8,6 +8,7 @@
 
 <% @questions.each do |question| %>
   <li>
+    <%= question.view_count %> Views!
     <%= question.votes.count %> Upvotes!
     <%= question.answers.count %> Answers!
     <a href="/questions/<%= question.id %>/vote">Up Arrow</a>
