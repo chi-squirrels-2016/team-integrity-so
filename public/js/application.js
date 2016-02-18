@@ -31,4 +31,16 @@ $(document).ready(function() {
       $('#new-answer').show();
     });
   });
+  $('.new-answer-comment').on("click", function( event ) {
+    event.preventDefault();
+    var destination = $(this).attr('href');
+    var ajaxRequest = $.ajax({
+      method: 'GET',
+      url: destination
+    });
+    ajaxRequest.done(function(thing) {
+      $(".new-answer-comment").hide();
+      $("#space-for-comment-box").append( thing );
+    });
+  });
 });

@@ -9,8 +9,6 @@ end
 
 post '/questions/:id/answers' do
   @answer = Answer.new(body: params[:body], user_id: current_user.id, question_id: params[:id])
-  p "*************************"
-  p @answer.body
   if request.xhr?
     if @answer.save
       status 200
