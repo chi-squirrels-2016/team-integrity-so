@@ -4,6 +4,7 @@ body {
   background-size: 80px 60px;*/
   background-color: rgb(255,192,203);
   font-family: 'Puritan', sans-serif;
+  padding-bottom: 50px;
 }
 
 a {
@@ -22,7 +23,13 @@ li {
   font-size: 1.1em;
 }
 
+html {
+  padding-bottom: 30px;
+}
 
+footer {
+  margin-top: 30px;
+}
 
 .accent-text {
   font-family: 'Courgette', sans-serif;
