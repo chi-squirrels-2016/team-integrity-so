@@ -4,6 +4,7 @@ get '/questions' do
 end
 
 get '/questions/:id' do
+  ensure_login
   @question = Question.find(params[:id])
   @question_responses = Response.where(responsable_type: 'Question', responsable_id: @question.id)
   @answers = Answer.where(question_id: @question.id)
@@ -39,14 +40,6 @@ get '/questions/:id/vote' do
   ensure_login
 
   Vote.create(votable_type: 'Question', votable_id: params[:id], user_id: current_user.id);
-
-  # Enter an error message for multiple votes with ajax/jquery
-  # if Vote.where(votable_type: 'Question', votable_id: params[:id], user_id: current_user.id)
-  #   @message = "We've already counted your vote on this. Thanks for voting!"
-  #   erb "questions/show"
-  # else
-  #   Vote.create(votable_type: 'Question', votable_id: params[:id], user_id: current_user.id);
-  # end
 
   redirect '/questions'
 end

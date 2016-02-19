@@ -1,11 +1,20 @@
-<h1>Question: <%= @question.body %></h1>
+
+
+<h1 class="accent-text">Question: <%= @question.body %></h1>
+
+<a href="/questions/<%= @question.id %>/vote">
+  <div class="icon-div heart-div"><div class="fa fa-heart fa-2x"> </div>this Question!
+</a>
+<br>
+<br>
+
 <a id="question_comment_btn" href="/questions/<%= @question.id %>/responses">Comment on Question</a>
 
 <ul id="question-comment-ul">
   <% @question_responses.each do |question_response| %>
     <li class="question-comment-list">
-      Question Comment: <%= question_response.body %><br>
-      <span>Written by <%= question_response.user.email %></span>
+      Comment: <p class="comment-text"><%= question_response.body %></p><br>
+      <span class="written-by">Written by <%= question_response.user.email %></span>
     </li>
   <% end %>
 </ul>

@@ -12,10 +12,8 @@ post '/questions/:id/answers' do
   if request.xhr?
     if @answer.save
       status 200
-      @question = Question.find(params[:id])
-      erb :"answers/_new", :layout => false
-    else
-      status 422
+      question = Question.find(params[:id])
+      erb :"answers/_new", :layout => false, locals: {question: question}
     end
   else
     if @answer.save
