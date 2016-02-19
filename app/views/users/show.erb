@@ -1,16 +1,14 @@
 
-<h1>TEAM AWESOME OVERFLOW!</h1>
+<h2 class="accent-text"><%= current_user.email %>'s page</h2>
 
-<h2><%= current_user.email %>'s page</h2>
-
-<h3>Questions</h3>
+<h3 class="accent-text">Questions</h3>
 <ul>
 <% current_user.questions.each do |question| %>
   <li><a href="/questions/<%=question.id%>"><%= question.body %></a> on <%= long_form_date(question.created_at) %></li>
 <% end %>
 </ul>
 
-<h3>Answers</h3>
+<h3 class="accent-text">Answers</h3>
 <ul>
   <!-- Update routes for answers. Links as body? -->
 <% current_user.answers.each do |answer| %>

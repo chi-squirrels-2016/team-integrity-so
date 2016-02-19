@@ -33,16 +33,18 @@ $(document).ready(function() {
     });
   });
 
-  $('.new-answer-comment').on("click", function( event ) {
+  $('ul').on("click", '.new-answer-comment', function( event ) {
     event.preventDefault();
+    // alert('test')
     var destination = $(this).attr('href');
+    console.log(this)
     var ajaxRequest = $.ajax({
       method: 'GET',
       url: destination
     });
     ajaxRequest.done(function(thing) {
-      $(this).hide();
-      $(this).next().append( thing );
+      console.log(this)
+      $(this).replaceWith(thing);
     }.bind(this));
   });
 

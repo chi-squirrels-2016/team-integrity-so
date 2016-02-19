@@ -1,11 +1,18 @@
-<h1>Question: <%= @question.body %></h1>
-<a id="question_comment_btn" href="/questions/<%= @question.id %>/responses">Comment on Question</a>
+
+
+<h1 class="accent-text question-headling"><%= @question.body %></h1>
+
+<a class="heart-this-q" href="/questions/<%= @question.id %>/vote">
+  <div class="icon-div heart-div"><div class="fa fa-heart fa-2x"> </div>this Question!</div>
+</a>
+
+<a class="comment-on-q" id="question_comment_btn" href="/questions/<%= @question.id %>/responses">Click to Comment on Question</a>
 
 <ul id="question-comment-ul">
   <% @question_responses.each do |question_response| %>
     <li class="question-comment-list">
-      Question Comment: <%= question_response.body %><br>
-      <span>Written by <%= question_response.user.email %></span>
+      Question Comment: <p class="comment-text"><%= question_response.body %></p><br>
+      <span class="written-by">Written by <%= question_response.user.email %></span>
     </li>
   <% end %>
 </ul>
@@ -15,21 +22,21 @@
 
 <ul id="answers-list">
   <% @answers.each do |answer| %>
-      <li>
+      <li class="one-answer-li">
         <% if @star == answer.id %>
           <span>BEST</span>
         <% end %>
         <% if @question.id == current_user.id %>
           <a href="/questions/<%= @question.id %>/answers/<%= answer.id %>/best_answer">Best Answer</a>
         <% end %>
-        Answer: <%= answer.body %>
+        <span class="answer-body">Answer: <%= answer.body %></span>
         <br>
-        <span>Written by <%= answer.user.email %></span><br>
-        <a class="new-answer-comment" href="/answers/<%= answer.id %>/responses">Comment on Answer</a>
+        <span class="written-by">Written by <%= answer.user.email %></span><br>
+        <a class="comment-invite new-answer-comment" href="/answers/<%= answer.id %>/responses">Click to Comment on this Answer</a>
         <span id="space-for-comment-box"></span>
         <ul class="answer-comment-list">
           <% @answer_responses[counter].each do |response| %>
-            <li>
+            <li class="answer-comment-li">
               Answer Comment: <%= response.body %><br>
               <span>Written by <%= response.user.email %></span>
             </li>
@@ -40,5 +47,5 @@
   <% end %>
 </ul>
 
-<a id="new-answer" href="/questions/<%= @question.id %>/answers">Answer a Question</a>
+<a id="new-answer" href="/questions/<%= @question.id %>/answers">Click to Answer this Question</a>
 
