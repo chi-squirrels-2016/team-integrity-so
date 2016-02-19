@@ -141,7 +141,9 @@ input:active {
   top:1px;
 }
 
-
+.one-answer-li, .question-comment-list {
+  color: darkred;
+}
 
 footer {
   position: fixed;
@@ -165,5 +167,25 @@ footer {
 
 .written-by {
   font-style: italic;
-  font-size: .9em;
+  font-size: .8em;
 }
+
+.heart-this.q, .comment-on-q {
+  margin: 50px;
+}
+
+.answer-comment-li {
+  font-size: 1em;
+  padding-left: 40px;
+}
+
+.comment-invite {
+  font-size: .8em;
+}
+
+.answer-body {
+  font-size: 1.2em;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
