@@ -4,6 +4,7 @@ get '/questions' do
 end
 
 get '/questions/:id' do
+  ensure_login
   @question = Question.find(params[:id])
   @question_responses = Response.where(responsable_type: 'Question', responsable_id: @question.id)
   @answers = Answer.where(question_id: @question.id)
